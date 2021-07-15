@@ -1,41 +1,14 @@
-# Программа запрашивает у пользователя строку чисел, разделенных пробелом.
-# При нажатии Enter должна выводиться сумма чисел.
-# Пользователь может продолжить ввод чисел, разделенных пробелом и снова нажать Enter.
-# Сумма вновь введенных чисел будет добавляться к уже подсчитанной сумме.
-# Но если вместо числа вводится специальный символ, выполнение программы завершается.
-# Если специальный символ введен после нескольких чисел,
-# то вначале нужно добавить сумму этих чисел к полученной ранее сумме и после этого завершить программу.
+# Реализовать формирование списка, используя функцию range() и возможности генератора.
+# В список должны войти четные числа от 100 до 1000 (включая границы).
+# Необходимо получить результат вычисления произведения всех элементов списка.
+# Подсказка: использовать функцию reduce()
 
-print('Программа для вычисления суммы')
-print('Стоп слово: "stop"')
-empty_list = []
-while True:
-    my_str = input('Ввод: ')
-    clear_str = my_str.strip()
-    my_list = clear_str.split(" ")
-    if 'stop' in my_list:
-        z = my_list.index('stop')
-        last_list = []
-        last_list.extend(my_list[0:z])
-        for el in last_list:
-            el = int(el)
-            empty_list.append(el)
-        break
-    else:
-        for el in my_list:
-            el = int(el)
-            empty_list.append(el)
-        print(empty_list)
-        get_sum = sum(empty_list)
-        print(get_sum)
+from functools import reduce
 
 
-print(empty_list)
-get_sum = sum(empty_list)
-print(get_sum)
-
-print('END')
+def get_sum(el_1, el_2):
+    return el_1 * el_2
 
 
-
-
+my_list = [el for el in list(range(100, 1001, 2))]
+print(reduce(get_sum, my_list))
